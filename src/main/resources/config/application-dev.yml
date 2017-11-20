@@ -93,16 +93,12 @@ jhipster:
         allowed-origins: "*"
         allowed-methods: "*"
         allowed-headers: "*"
-        exposed-headers: "Authorization"
         allow-credentials: true
         max-age: 1800
     security:
-        authentication:
-            jwt:
-                secret: my-secret-token-to-change-in-production
-                # Token is valid 24 hours
-                token-validity-in-seconds: 86400
-                token-validity-in-seconds-for-remember-me: 2592000
+        remember-me:
+            # security key (this key should be unique for your application, and kept secret)
+            key: eaa5deaf9c4f401be42ae5c720cf5fa261a8e9c0
     mail: # specific JHipster mail property, for standard properties see MailProperties
         from: jhipster@localhost
         base-url: http://127.0.0.1:8080
