@@ -11,6 +11,7 @@
             "error": "오류"
         },
         "indicator": {
+            "binders": "Message broker",
             "diskSpace": "디스크 공간",
             "mail": "이메일",
             "db": "데이터베이스"
