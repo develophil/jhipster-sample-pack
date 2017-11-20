@@ -1,5 +1,6 @@
 package net.hkp.jhipster.web.rest;
 
+import net.hkp.jhipster.AbstractCassandraTest;
 import net.hkp.jhipster.JhipsterApp;
 import net.hkp.jhipster.web.rest.vm.LoggerVM;
 import ch.qos.logback.classic.AsyncAppender;
@@ -28,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = JhipsterApp.class)
-public class LogsResourceIntTest {
+public class LogsResourceIntTest extends AbstractCassandraTest {
 
     private MockMvc restLogsMockMvc;
 

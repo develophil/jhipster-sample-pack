@@ -2,14 +2,12 @@ package net.hkp.jhipster.service.dto;
 
 import net.hkp.jhipster.config.Constants;
 
-import net.hkp.jhipster.domain.Authority;
 import net.hkp.jhipster.domain.User;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.*;
-import java.time.Instant;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -18,7 +16,7 @@ import java.util.stream.Collectors;
  */
 public class UserDTO {
 
-    private Long id;
+    private String id;
 
     @NotBlank
     @Pattern(regexp = Constants.LOGIN_REGEX)
@@ -35,21 +33,10 @@ public class UserDTO {
     @Size(min = 5, max = 100)
     private String email;
 
-    @Size(max = 256)
-    private String imageUrl;
-
     private boolean activated = false;
 
     @Size(min = 2, max = 6)
     private String langKey;
-
-    private String createdBy;
-
-    private Instant createdDate;
-
-    private String lastModifiedBy;
-
-    private Instant lastModifiedDate;
 
     private Set<String> authorities;
 
@@ -59,16 +46,12 @@ public class UserDTO {
 
     public UserDTO(User user) {
         this(user.getId(), user.getLogin(), user.getFirstName(), user.getLastName(),
-            user.getEmail(), user.getActivated(), user.getImageUrl(), user.getLangKey(),
-            user.getCreatedBy(), user.getCreatedDate(), user.getLastModifiedBy(), user.getLastModifiedDate(),
-            user.getAuthorities().stream().map(Authority::getName)
-                .collect(Collectors.toSet()));
+            user.getEmail(), user.getActivated(),user.getLangKey(),
+            user.getAuthorities());
     }
 
-    public UserDTO(Long id, String login, String firstName, String lastName,
-        String email, boolean activated, String imageUrl, String langKey,
-        String createdBy, Instant createdDate, String lastModifiedBy, Instant lastModifiedDate,
-        Set<String> authorities) {
+    public UserDTO(String id, String login, String firstName, String lastName,
+        String email, boolean activated,String langKey,Set<String> authorities) {
 
         this.id = id;
         this.login = login;
@@ -76,20 +59,15 @@ public class UserDTO {
         this.lastName = lastName;
         this.email = email;
         this.activated = activated;
-        this.imageUrl = imageUrl;
         this.langKey = langKey;
-        this.createdBy = createdBy;
-        this.createdDate = createdDate;
-        this.lastModifiedBy = lastModifiedBy;
-        this.lastModifiedDate = lastModifiedDate;
         this.authorities = authorities;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -113,36 +91,12 @@ public class UserDTO {
         return email;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
     public boolean isActivated() {
         return activated;
     }
 
     public String getLangKey() {
         return langKey;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public Instant getCreatedDate() {
-        return createdDate;
-    }
-
-    public String getLastModifiedBy() {
-        return lastModifiedBy;
-    }
-
-    public Instant getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(Instant lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
     }
 
     public Set<String> getAuthorities() {
@@ -156,13 +110,8 @@ public class UserDTO {
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", email='" + email + '\'' +
-            ", imageUrl='" + imageUrl + '\'' +
             ", activated=" + activated +
             ", langKey='" + langKey + '\'' +
-            ", createdBy=" + createdBy +
-            ", createdDate=" + createdDate +
-            ", lastModifiedBy='" + lastModifiedBy + '\'' +
-            ", lastModifiedDate=" + lastModifiedDate +
             ", authorities=" + authorities +
             "}";
     }

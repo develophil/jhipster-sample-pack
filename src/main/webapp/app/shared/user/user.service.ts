@@ -38,10 +38,7 @@ export class UserService {
     }
 
     authorities(): Observable<string[]> {
-        return this.http.get(SERVER_API_URL + 'api/users/authorities').map((res: Response) => {
-            const json = res.json();
-            return <string[]> json;
-        });
+        return Observable.of(['ROLE_USER', 'ROLE_ADMIN']);
     }
 
     private convertResponse(res: Response): ResponseWrapper {

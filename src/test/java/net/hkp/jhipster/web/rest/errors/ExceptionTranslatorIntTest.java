@@ -1,5 +1,6 @@
 package net.hkp.jhipster.web.rest.errors;
 
+import net.hkp.jhipster.AbstractCassandraTest;
 import net.hkp.jhipster.JhipsterApp;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = JhipsterApp.class)
-public class ExceptionTranslatorIntTest {
+public class ExceptionTranslatorIntTest extends AbstractCassandraTest {
 
     @Autowired
     private ExceptionTranslatorTestController controller;
@@ -45,14 +46,6 @@ public class ExceptionTranslatorIntTest {
             .setControllerAdvice(exceptionTranslator)
             .setMessageConverters(jacksonMessageConverter)
             .build();
-    }
-
-    @Test
-    public void testConcurrencyFailure() throws Exception {
-        mockMvc.perform(get("/test/concurrency-failure"))
-            .andExpect(status().isConflict())
-            .andExpect(content().contentType(MediaTypes.PROBLEM))
-            .andExpect(jsonPath("$.message").value(ErrorConstants.ERR_CONCURRENCY_FAILURE));
     }
 
     @Test

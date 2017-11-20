@@ -1,6 +1,5 @@
 package net.hkp.jhipster.service.mapper;
 
-import net.hkp.jhipster.domain.Authority;
 import net.hkp.jhipster.domain.User;
 import net.hkp.jhipster.service.dto.UserDTO;
 
@@ -39,13 +38,9 @@ public class UserMapper {
             user.setFirstName(userDTO.getFirstName());
             user.setLastName(userDTO.getLastName());
             user.setEmail(userDTO.getEmail());
-            user.setImageUrl(userDTO.getImageUrl());
             user.setActivated(userDTO.isActivated());
             user.setLangKey(userDTO.getLangKey());
-            Set<Authority> authorities = this.authoritiesFromStrings(userDTO.getAuthorities());
-            if(authorities != null) {
-                user.setAuthorities(authorities);
-            }
+            user.setAuthorities(userDTO.getAuthorities());
             return user;
         }
     }
@@ -57,20 +52,12 @@ public class UserMapper {
             .collect(Collectors.toList());
     }
 
-    public User userFromId(Long id) {
+    public User userFromId(String id) {
         if (id == null) {
             return null;
         }
         User user = new User();
         user.setId(id);
         return user;
-    }
-
-    public Set<Authority> authoritiesFromStrings(Set<String> strings) {
-        return strings.stream().map(string -> {
-            Authority auth = new Authority();
-            auth.setName(string);
-            return auth;
-        }).collect(Collectors.toSet());
     }
 }

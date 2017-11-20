@@ -1,6 +1,7 @@
 package net.hkp.jhipster.web.rest;
 
 import io.github.jhipster.config.JHipsterProperties;
+import net.hkp.jhipster.AbstractCassandraTest;
 import net.hkp.jhipster.JhipsterApp;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  **/
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = JhipsterApp.class)
-public class ProfileInfoResourceIntTest {
+public class ProfileInfoResourceIntTest extends AbstractCassandraTest {
 
     @Mock
     private Environment environment;

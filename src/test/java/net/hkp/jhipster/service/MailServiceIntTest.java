@@ -1,6 +1,7 @@
 package net.hkp.jhipster.service;
 import net.hkp.jhipster.config.Constants;
 
+import net.hkp.jhipster.AbstractCassandraTest;
 import net.hkp.jhipster.JhipsterApp;
 import net.hkp.jhipster.domain.User;
 import io.github.jhipster.config.JHipsterProperties;
@@ -31,7 +32,7 @@ import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = JhipsterApp.class)
-public class MailServiceIntTest {
+public class MailServiceIntTest extends AbstractCassandraTest {
 
     @Autowired
     private JHipsterProperties jHipsterProperties;

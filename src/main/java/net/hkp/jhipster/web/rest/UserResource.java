@@ -13,15 +13,11 @@ import net.hkp.jhipster.web.rest.errors.EmailAlreadyUsedException;
 import net.hkp.jhipster.web.rest.errors.LoginAlreadyUsedException;
 import net.hkp.jhipster.web.rest.vm.ManagedUserVM;
 import net.hkp.jhipster.web.rest.util.HeaderUtil;
-import net.hkp.jhipster.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import io.swagger.annotations.ApiParam;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
@@ -139,25 +135,13 @@ public class UserResource {
     /**
      * GET  /users : get all users.
      *
-     * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and with body all users
      */
     @GetMapping("/users")
     @Timed
-    public ResponseEntity<List<UserDTO>> getAllUsers(@ApiParam Pageable pageable) {
-        final Page<UserDTO> page = userService.getAllManagedUsers(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-    }
-
-    /**
-     * @return a string list of the all of the roles
-     */
-    @GetMapping("/users/authorities")
-    @Timed
-    @Secured(AuthoritiesConstants.ADMIN)
-    public List<String> getAuthorities() {
-        return userService.getAuthorities();
+    public ResponseEntity<List<UserDTO>> getAllUsers() {
+        final List<UserDTO> userDTOs = userService.getAllManagedUsers();
+        return new ResponseEntity<>(userDTOs, HttpStatus.OK);
     }
 
     /**

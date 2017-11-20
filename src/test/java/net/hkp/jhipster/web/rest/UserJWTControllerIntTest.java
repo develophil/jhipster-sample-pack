@@ -1,5 +1,6 @@
 package net.hkp.jhipster.web.rest;
 
+import net.hkp.jhipster.AbstractCassandraTest;
 import net.hkp.jhipster.JhipsterApp;
 import net.hkp.jhipster.domain.User;
 import net.hkp.jhipster.repository.UserRepository;
@@ -16,7 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.UUID;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -33,7 +35,7 @@ import static org.hamcrest.Matchers.not;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = JhipsterApp.class)
-public class UserJWTControllerIntTest {
+public class UserJWTControllerIntTest extends AbstractCassandraTest {
 
     @Autowired
     private TokenProvider tokenProvider;
@@ -61,15 +63,15 @@ public class UserJWTControllerIntTest {
     }
 
     @Test
-    @Transactional
     public void testAuthorize() throws Exception {
         User user = new User();
+        user.setId(UUID.randomUUID().toString());
         user.setLogin("user-jwt-controller");
         user.setEmail("user-jwt-controller@example.com");
         user.setActivated(true);
         user.setPassword(passwordEncoder.encode("test"));
 
-        userRepository.saveAndFlush(user);
+        userRepository.save(user);
 
         LoginVM login = new LoginVM();
         login.setUsername("user-jwt-controller");
@@ -85,15 +87,15 @@ public class UserJWTControllerIntTest {
     }
 
     @Test
-    @Transactional
     public void testAuthorizeWithRememberMe() throws Exception {
         User user = new User();
+        user.setId(UUID.randomUUID().toString());
         user.setLogin("user-jwt-controller-remember-me");
         user.setEmail("user-jwt-controller-remember-me@example.com");
         user.setActivated(true);
         user.setPassword(passwordEncoder.encode("test"));
 
-        userRepository.saveAndFlush(user);
+        userRepository.save(user);
 
         LoginVM login = new LoginVM();
         login.setUsername("user-jwt-controller-remember-me");
@@ -110,7 +112,6 @@ public class UserJWTControllerIntTest {
     }
 
     @Test
-    @Transactional
     public void testAuthorizeFails() throws Exception {
         LoginVM login = new LoginVM();
         login.setUsername("wrong-user");

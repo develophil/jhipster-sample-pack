@@ -4,11 +4,21 @@ services:
         image: jhipster
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
-            - SPRING_DATASOURCE_URL=jdbc:mysql://jhipster-mysql:3306/jhipster?useUnicode=true&characterEncoding=utf8&useSSL=false
-            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+            - SPRING_DATA_CASSANDRA_CONTACTPOINTS=jhipster-cassandra
+            - JHIPSTER_SLEEP=30 # gives time for the Cassandra cluster to start and execute the migration scripts
         ports:
             - 8080:8080
-    jhipster-mysql:
+    jhipster-cassandra:
         extends:
-            file: mysql.yml
-            service: jhipster-mysql
+            file: cassandra-cluster.yml
+            service: jhipster-cassandra
+    jhipster-cassandra-node:
+        image: cassandra:3.9
+        environment:
+            - CASSANDRA_SEEDS=jhipster-cassandra
+    jhipster-cassandra-migration:
+        extends:
+            file: cassandra-migration.yml
+            service: jhipster-cassandra-migration
+        environment:
+            - CREATE_KEYSPACE_SCRIPT=create-keyspace-prod.cql

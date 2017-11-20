@@ -3,7 +3,6 @@ package net.hkp.jhipster.web.rest.vm;
 import net.hkp.jhipster.service.dto.UserDTO;
 import javax.validation.constraints.Size;
 
-import java.time.Instant;
 import java.util.Set;
 
 /**
@@ -22,13 +21,12 @@ public class ManagedUserVM extends UserDTO {
         // Empty constructor needed for Jackson.
     }
 
-    public ManagedUserVM(Long id, String login, String password, String firstName, String lastName,
-                         String email, boolean activated, String imageUrl, String langKey,
-                         String createdBy, Instant createdDate, String lastModifiedBy, Instant lastModifiedDate,
-                        Set<String> authorities) {
+    public ManagedUserVM(String id, String login, String password, String firstName, String lastName,
+                         String email, boolean activated, String langKey,
+                         Set<String> authorities) {
 
-        super(id, login, firstName, lastName, email, activated, imageUrl, langKey,
-            createdBy, createdDate, lastModifiedBy, lastModifiedDate,  authorities);
+        super(id, login, firstName, lastName, email, activated, langKey,
+            authorities);
         this.password = password;
     }
 

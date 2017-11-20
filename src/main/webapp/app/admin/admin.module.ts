@@ -6,7 +6,6 @@ import { JhipsterSharedModule } from '../shared';
 
 import {
     adminState,
-    AuditsComponent,
     UserMgmtComponent,
     UserDialogComponent,
     UserDeleteDialogComponent,
@@ -20,7 +19,6 @@ import {
     JhiHealthCheckComponent,
     JhiConfigurationComponent,
     JhiDocsComponent,
-    AuditsService,
     JhiConfigurationService,
     JhiHealthService,
     JhiMetricsService,
@@ -37,7 +35,6 @@ import {
         /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
     ],
     declarations: [
-        AuditsComponent,
         UserMgmtComponent,
         UserDialogComponent,
         UserDeleteDialogComponent,
@@ -59,7 +56,6 @@ import {
         JhiMetricsMonitoringModalComponent,
     ],
     providers: [
-        AuditsService,
         JhiConfigurationService,
         JhiHealthService,
         JhiMetricsService,
