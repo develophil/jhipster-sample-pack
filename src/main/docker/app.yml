@@ -4,11 +4,12 @@ services:
         image: jhipster
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
-            - SPRING_DATASOURCE_URL=jdbc:mysql://jhipster-mysql:3306/jhipster?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - SPRING_DATA_MONGODB_URI=mongodb://jhipster-mongodb:27017
+            - SPRING_DATA_MONGODB_DATABASE=jhipster
             - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
         ports:
             - 8080:8080
-    jhipster-mysql:
+    jhipster-mongodb:
         extends:
-            file: mysql.yml
-            service: jhipster-mysql
+            file: mongodb.yml
+            service: jhipster-mongodb
