@@ -22,12 +22,14 @@
     "buildTool": "maven",
     "enableSocialSignIn": false,
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "be0c56c7040c548026f0a73d55f1c55beefdb8c3",
+    "jwtSecretKey": "a10a14e94c15ba472058782f6b24a02f25b80c47",
     "clientFramework": "angularX",
     "useSass": false,
     "clientPackageManager": "yarn",
     "applicationType": "monolith",
-    "testFrameworks": [],
+    "testFrameworks": [
+      "cucumber"
+    ],
     "jhiPrefix": "jhi",
     "enableTranslation": true,
     "nativeLanguage": "ko",
