@@ -7,7 +7,6 @@ import { Ng2Webstorage } from 'ng2-webstorage';
 import { JhipsterSharedModule, UserRouteAccessService } from './shared';
 import { JhipsterHomeModule } from './home/home.module';
 import { JhipsterAdminModule } from './admin/admin.module';
-import { JhipsterAccountModule } from './account/account.module';
 import { JhipsterEntityModule } from './entities/entity.module';
 
 import { customHttpProvider } from './blocks/interceptor/http.provider';
@@ -34,7 +33,6 @@ import {
         JhipsterSharedModule,
         JhipsterHomeModule,
         JhipsterAdminModule,
-        JhipsterAccountModule,
         JhipsterEntityModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
