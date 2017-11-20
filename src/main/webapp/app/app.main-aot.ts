@@ -1,6 +1,6 @@
 import { platformBrowser } from '@angular/platform-browser';
 import { ProdConfig } from './blocks/config/prod.config';
-import { JhipsterAppModuleNgFactory } from '../../../../target/aot/src/main/webapp/app/app.module.ngfactory';
+import { JhipsterAppModuleNgFactory } from '../../../../build/aot/src/main/webapp/app/app.module.ngfactory';
 
 ProdConfig();
 
