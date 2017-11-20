@@ -1,8 +1,6 @@
 import { ComponentFixture, TestBed, async, inject, tick, fakeAsync } from '@angular/core/testing';
 import { Renderer, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-import { JhiLanguageService } from 'ng-jhipster';
-import { MockLanguageService } from '../../../helpers/mock-language.service';
 import { JhipsterTestModule } from '../../../test.module';
 import { LoginModalService, EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from '../../../../../../main/webapp/app/shared';
 import { Register } from '../../../../../../main/webapp/app/account/register/register.service';
@@ -53,8 +51,8 @@ describe('Component Tests', () => {
         });
 
         it('should update success to OK after creating an account',
-            inject([Register, JhiLanguageService],
-                fakeAsync((service: Register, mockTranslate: MockLanguageService) => {
+            inject([Register],
+                fakeAsync((service: Register) => {
                     spyOn(service, 'save').and.returnValue(Observable.of({}));
                     comp.registerAccount.password = comp.confirmPassword = 'password';
 
@@ -63,11 +61,10 @@ describe('Component Tests', () => {
 
                     expect(service.save).toHaveBeenCalledWith({
                         password: 'password',
-                        langKey: 'ko'
+                        langKey: 'en'
                     });
                     expect(comp.success).toEqual(true);
-                    expect(comp.registerAccount.langKey).toEqual('ko');
-                    expect(mockTranslate.getCurrentSpy).toHaveBeenCalled();
+                    expect(comp.registerAccount.langKey).toEqual('en');
                     expect(comp.errorUserExists).toBeNull();
                     expect(comp.errorEmailExists).toBeNull();
                     expect(comp.error).toBeNull();

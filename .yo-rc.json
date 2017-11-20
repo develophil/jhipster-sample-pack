@@ -1,8 +1,7 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "net.hkp.jhipster",
-      "nativeLanguage": "ko"
+      "packageName": "net.hkp.jhipster"
     },
     "jhipsterVersion": "4.10.2",
     "baseName": "jhipster",
@@ -22,18 +21,13 @@
     "buildTool": "maven",
     "enableSocialSignIn": false,
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "be0c56c7040c548026f0a73d55f1c55beefdb8c3",
+    "jwtSecretKey": "f053638c80471731581c79590701ca94ea5d8da4",
     "clientFramework": "angularX",
     "useSass": false,
     "clientPackageManager": "yarn",
     "applicationType": "monolith",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
-    "enableTranslation": true,
-    "nativeLanguage": "ko",
-    "languages": [
-      "ko",
-      "en"
-    ]
+    "enableTranslation": false
   }
 }
