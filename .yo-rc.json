@@ -22,13 +22,19 @@
     "buildTool": "maven",
     "enableSocialSignIn": false,
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "be0c56c7040c548026f0a73d55f1c55beefdb8c3",
+    "jwtSecretKey": "3a6d06ce593c5f2fa873c53ec6be2a8dca4a518c",
     "clientFramework": "angularX",
     "useSass": false,
     "clientPackageManager": "yarn",
     "applicationType": "monolith",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-bootstrap-material-design",
+        "version": "3.5.1"
+      }
+    ],
     "enableTranslation": true,
     "nativeLanguage": "ko",
     "languages": [
