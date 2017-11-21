@@ -22,13 +22,19 @@
     "buildTool": "maven",
     "enableSocialSignIn": false,
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "be0c56c7040c548026f0a73d55f1c55beefdb8c3",
+    "jwtSecretKey": "95b97676a29ef4496dc341b3595672814bec3f90",
     "clientFramework": "angularX",
     "useSass": false,
     "clientPackageManager": "yarn",
     "applicationType": "monolith",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-ci",
+        "version": "1.0.0"
+      }
+    ],
     "enableTranslation": true,
     "nativeLanguage": "ko",
     "languages": [
